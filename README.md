@@ -26,7 +26,7 @@ database
 ```
 
 ## Realtime Databse Rules
-Firebase Realtime Database does not have the level of fine-grained access control as Firestore. I have tested it with the follwing rules. These rules are not secure and only use ir for testing.
+Firebase Realtime Database does not have the level of fine-grained access control as Firestore. I have tested it with the follwing rules. These rules are not secure and only use it for testing.
 ```
 {
   "rules": {
