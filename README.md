@@ -25,6 +25,50 @@ database
                     |----- messages for roomID
 ```
 
+## Realtime Databse Rules
+Firebase Realtime Database does not have the level of fine-grained access control as Firestore. I have tested it with the follwing rules. These rules are not secure and only use ir for testing.
+```
+{
+  "rules": {
+    "users":{
+      ".read": "auth !=null",
+      ".write": "auth !=null",
+      "$user_id":{
+        ".read": "auth !=null",
+        ".write": "auth !=null",
+      }
+    },
+    "rooms":{
+      ".read": "auth !=null",
+      ".write": "auth !=null",
+      "$room_id":{
+        ".read": "auth !=null",
+        ".write": "auth !=null",
+      }
+    },
+    "messages":{
+      ".read": "auth !=null",
+      "$room_id":{
+        ".read": "auth !=null",
+        ".write": "auth !=null",
+      }
+    }
+  }
+}
+```
+An alternative way to restrict the read/write permissions to only authorized users is to use a form of rule such as:
+```
+".read": "root.child('rooms').child($room_id).child('userIds').child(auth.uid).val() == true",
+```
+inside the room_id child. To use this rule, userIds need to change from a List saved as a String to Map such as:
+```
+userIds:{
+  'user1Id': true,
+  'user2Id': true,
+  }
+```
+
+
 ## TODO
 
 * Better filtering of rooms to emulate Firestore queries by creting an index for each room
