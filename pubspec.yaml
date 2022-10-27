@@ -1,0 +1,25 @@
+name: flutter_realtimedb_chat_core
+description: Flutter Firebase Chat Core using RealtimeDB
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  firebase_auth: ^4.0.2
+  firebase_core: ^2.1.0
+  firebase_database: ^10.0.2
+
+  flutter_chat_types: ^3.5.0
+  meta: ^1.8.0
+
+  flutter:
+    sdk: flutter
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
