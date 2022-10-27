@@ -27,7 +27,6 @@ Future<Map<String, dynamic>> fetchUser(
       await instance.ref().child(usersCollectionName).child(userId).get();
 
   final data = Map<String, dynamic>.from(doc.value as Map);
-  // print('$userId: $data');
 
   data['createdAt'] = data['createdAt'];
   data['id'] = userId;
@@ -76,8 +75,6 @@ Future<types.Room> processRoomDocument(
   final type = data['type'] as String;
   final userIds = List<String>.from(jsonDecode(data['userIds'] as String));
   final userRoles = data['userRoles'] as Map<String, dynamic>?;
-
-  // print('userIds: $userIds');
 
   final users = await Future.wait(
     userIds.map(
